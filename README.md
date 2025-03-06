@@ -1,4 +1,4 @@
-# GroupGame
+# GroupHorrorGame
 
 Overview
 
