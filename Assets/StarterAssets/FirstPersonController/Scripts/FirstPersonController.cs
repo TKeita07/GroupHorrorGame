@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
 	[RequireComponent(typeof(CharacterController))]
+	[RequireComponent(typeof(AudioSource))]
 #if ENABLE_INPUT_SYSTEM
 	[RequireComponent(typeof(PlayerInput))]
 #endif
@@ -51,6 +52,7 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -68,6 +70,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
+		private AudioSource _audioSource;
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
@@ -98,6 +101,7 @@ namespace StarterAssets
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
+			_audioSource = GetComponent<AudioSource>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
@@ -190,8 +194,12 @@ namespace StarterAssets
 			// if there is a move input rotate player when the player is moving
 			if (_input.move != Vector2.zero)
 			{
+				_audioSource.enabled = true;
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+			}else{
+				//_audioSource.Stop();
+				_audioSource.enabled = false;
 			}
 
 			// move the player

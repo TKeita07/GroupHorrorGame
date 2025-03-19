@@ -3,7 +3,7 @@
 public class BasicRigidBodyPush : MonoBehaviour
 {
 	public LayerMask pushLayers;
-	public bool canPush;
+	public bool canPush = true;
 	[Range(0.5f, 5f)] public float strength = 1.1f;
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -18,7 +18,7 @@ public class BasicRigidBodyPush : MonoBehaviour
 		// make sure we hit a non kinematic rigidbody
 		Rigidbody body = hit.collider.attachedRigidbody;
 		if (body == null || body.isKinematic) return;
-
+	
 		// make sure we only push desired layer(s)
 		var bodyLayerMask = 1 << body.gameObject.layer;
 		if ((bodyLayerMask & pushLayers.value) == 0) return;
