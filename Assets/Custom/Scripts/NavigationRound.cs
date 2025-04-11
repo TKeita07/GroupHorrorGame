@@ -5,6 +5,7 @@ using UnityEngine.AI;
     public class NavigationRound : MonoBehaviour
     {
         public bool isEnemy = false;
+        public float m_Scale = 1f;
         public Transform[] goals = new Transform[3];
     
         NavMeshAgent m_Agent;
@@ -20,8 +21,8 @@ using UnityEngine.AI;
         private float timeCounter = 0.0f;
         private float runTimer = 5.0f;
         private float idleTimer = 3.0f;
-        private float runningSpeed = 6.0f;
-        private float walkingSpeed = 1.5f;
+        private float runningSpeed = 14.0f;
+        private float walkingSpeed = 5f;
         private GameObject target;
 
         void Start()
@@ -73,7 +74,8 @@ using UnityEngine.AI;
         void MoveRound()
         {   
             float distance = Vector3.Distance(m_Agent.transform.position, goals[m_NextGoal].position);
-            if (distance < 0.7f)
+
+            if (distance < 1f*m_Scale)
             {
                 m_NextGoal = (m_NextGoal + 1) % goals.Length;
                 isWaiting = true;
@@ -91,7 +93,7 @@ using UnityEngine.AI;
             pauseRound = true;
             float distance = Vector3.Distance (m_Agent.transform.position, m_fov.playerRef.transform.position);
             
-            if (distance < 1.5f)
+            if (distance < 1.5f*m_Scale)
             {
                 Destroy(m_fov.playerRef);
                 Debug.Log("You have been caught!");
