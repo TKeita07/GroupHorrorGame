@@ -206,12 +206,12 @@ namespace StarterAssets
 			// if there is a move input rotate player when the player is moving
 			if (_input.move != Vector2.zero)
 			{
-				// _audioSource.enabled = true;
+				m_AudioSource.enabled = true;
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 			}else{
-				//_audioSource.Stop();
-				// _audioSource.enabled = false;
+				m_AudioSource.Stop();
+				m_AudioSource.enabled = false;
 			}
 
 			// move the player
@@ -220,7 +220,7 @@ namespace StarterAssets
 			PlayFootstepSound();
 			if (_input.jump)
 			{
-				playJumpSound();
+				// playJumpSound();
 			}
 		}
 

@@ -7,6 +7,9 @@ using UnityEngine.AI;
         public bool isEnemy = false;
         public float m_Scale = 1f;
         public Transform[] goals = new Transform[3];
+        public float runningSpeed = 14.0f;
+        public float walkingSpeed = 5f;
+
     
         NavMeshAgent m_Agent;
 
@@ -20,15 +23,14 @@ using UnityEngine.AI;
         private float waitTime = 10.0f;
         private float timeCounter = 0.0f;
         private float runTimer = 5.0f;
-        private float idleTimer = 3.0f;
-        private float runningSpeed = 14.0f;
-        private float walkingSpeed = 5f;
-        private GameObject target;
+        private float idleTimer = 3.0f;        private GameObject target;
 
         void Start()
         {
             m_Agent = GetComponent<NavMeshAgent>();
             m_fov = GetComponent<FieldOfView>();
+
+            m_Agent.speed = walkingSpeed;
         }
     
         void Update()
@@ -95,7 +97,9 @@ using UnityEngine.AI;
             
             if (distance < 1.5f*m_Scale)
             {
-                Destroy(m_fov.playerRef);
+                print("m_fov.playerRef: " + m_fov.playerRef);
+                // Destroy(m_fov.playerRef);
+                m_fov.playerRef.GetComponent<Die>().die();
                 Debug.Log("You have been caught!");
                 pauseRound = false;
                 isRunning = false;

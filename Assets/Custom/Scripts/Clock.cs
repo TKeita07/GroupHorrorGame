@@ -22,7 +22,12 @@ public class Clock : MonoBehaviour
     void Start()
     {
         timerText = GetComponent<TextMeshProUGUI>();
-        timeElapsed = 0f;
+        if(SceneLoadData.clockStarted) {
+            timeElapsed = SceneLoadData.currentTime;
+        } else {
+            timeElapsed = 0f;
+            SceneLoadData.clockStarted = true;
+        }
         timefactor = 18000 / (TempDeJeux * 60); // 18000 seconds = 5 hours
     }
 
@@ -36,6 +41,7 @@ public class Clock : MonoBehaviour
         {
             ClockElapse();
         }
+        SceneLoadData.currentTime = timeElapsed;
     }
     void TimerElapse() {
         timeElapsed += Time.deltaTime;

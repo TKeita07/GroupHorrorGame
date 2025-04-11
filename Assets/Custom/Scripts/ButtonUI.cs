@@ -10,4 +10,7 @@ public class ButtonController : MonoBehaviour
         // Load the game scene (assuming it's named "GameScene")
         SceneManager.LoadScene(sceneName);
     }
+    public void Start(){
+        
+    }
 }

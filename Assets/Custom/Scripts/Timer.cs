@@ -23,8 +23,13 @@ public class CountDown : MonoBehaviour
     void Start()
     {
         countDownText = countDownObject.GetComponent<TextMeshProUGUI>();
-        countDownText.text = countDownText.ToString();
-        StartTimer();
+        countDownText.text = countDownTime.ToString();
+        if (SceneLoadData.hasSeenTutorial){
+            panelObject.SetActive(false);
+        } else {
+            StartTimer();
+            SceneLoadData.hasSeenTutorial = true;
+        }
         
     }
 
@@ -33,6 +38,7 @@ public class CountDown : MonoBehaviour
         if (framedSkipped < skipFirstFrames)
         {
             framedSkipped++;
+            
             return;
         }
         if (isCountDownRunning)
@@ -54,6 +60,7 @@ public class CountDown : MonoBehaviour
             isCountDownRunning = false;
             Time.timeScale = 1;
             panelObject.SetActive(false);
+            PlayerPrefs.SetInt("hasSeenTuto", 1); 
             return;
         }
 
