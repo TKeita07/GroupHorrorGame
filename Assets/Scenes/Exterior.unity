@@ -6859,9 +6859,17 @@ PrefabInstance:
       value: 0.13494426
       objectReference: {fileID: 0}
     - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fd3f3975b26d4594b51cffcb5c51657, type: 3}
+    - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: MaxDistance
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fd3f3975b26d4594b51cffcb5c51657, type: 3}
     - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: rolloffMode
       value: 2
@@ -6950,6 +6958,10 @@ PrefabInstance:
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6491862600816214189, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b6ac729460974b4fa390f22ae26e119, type: 3}
     - target: {fileID: 6491862600816214189, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: audioObject
       value: 
@@ -50272,9 +50284,17 @@ PrefabInstance:
       value: 0.13494426
       objectReference: {fileID: 0}
     - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 774383cdf61d549c8a45d958fc946ead, type: 3}
+    - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: MaxDistance
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 774383cdf61d549c8a45d958fc946ead, type: 3}
     - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: rolloffMode
       value: 2
@@ -50363,6 +50383,10 @@ PrefabInstance:
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6491862600816214189, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 13db30044c74d46e2a5c91fd47241654, type: 3}
     - target: {fileID: 6491862600816214189, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: audioObject
       value: 
@@ -61176,9 +61200,17 @@ PrefabInstance:
       value: 0.13494426
       objectReference: {fileID: 0}
     - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: be30df0537b7c4817914307a08a7b124, type: 3}
+    - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: MaxDistance
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: be30df0537b7c4817914307a08a7b124, type: 3}
     - target: {fileID: 3533968617140569121, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: rolloffMode
       value: 2
@@ -61267,6 +61299,10 @@ PrefabInstance:
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6491862600816214189, guid: 843b331bfd9611944930749e821e17a9, type: 3}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ac8aa16a23df48408ae8c41f0f44ede, type: 3}
     - target: {fileID: 6491862600816214189, guid: 843b331bfd9611944930749e821e17a9, type: 3}
       propertyPath: audioObject
       value: 

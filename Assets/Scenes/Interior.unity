@@ -123985,6 +123985,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2285149214000709813, guid: 146f18cb9b2b44147b8d167a9588e339, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: c49a7804fe0234d24ba6496065ebf62d, type: 3}
+    - target: {fileID: 2285149214000709813, guid: 146f18cb9b2b44147b8d167a9588e339, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c49a7804fe0234d24ba6496065ebf62d, type: 3}
     - target: {fileID: 3228065512616491286, guid: 146f18cb9b2b44147b8d167a9588e339, type: 3}
       propertyPath: m_Layer
       value: 0
