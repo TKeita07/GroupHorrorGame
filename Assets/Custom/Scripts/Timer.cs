@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class CountDown : MonoBehaviour
 {
     // Durrée du timer en secondes
@@ -19,9 +20,13 @@ public class CountDown : MonoBehaviour
     private bool isCountDownRunning = false;
     private int skipFirstFrames = 5;
     private int framedSkipped = 0;
+    private AudioSource m_audioSource;
+    private bool soundPlayed = false;
+
 
     void Start()
     {
+        m_audioSource = GetComponent<AudioSource>();
         countDownText = countDownObject.GetComponent<TextMeshProUGUI>();
         countDownText.text = countDownTime.ToString();
         if (SceneLoadData.hasSeenTutorial){
@@ -54,6 +59,12 @@ public class CountDown : MonoBehaviour
         int timeleft = countDownTime - totalSeconds;
 
         countDownText.text = timeleft.ToString();
+
+        if (!soundPlayed && timeleft <= 3)
+        {
+            soundPlayed = true;
+            m_audioSource.Play();
+        }
 
         if (timeleft <= 0)
         {

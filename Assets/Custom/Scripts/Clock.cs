@@ -15,6 +15,8 @@ public class Clock : MonoBehaviour
     // Durrée de la partie en minutes
     public int TempDeJeux = 5;  
 
+    public bool reduceTime = false; 
+
     private TextMeshProUGUI timerText;
     private float timeElapsed;
     private float timefactor;  
@@ -33,6 +35,10 @@ public class Clock : MonoBehaviour
 
     void Update()
     {
+        if (SceneLoadData.reduceTime){
+            timeElapsed += 60;
+            SceneLoadData.reduceTime = false;
+        }
         if (dropDown == ClockChoices.Timer)
         {
             TimerElapse();
@@ -53,6 +59,11 @@ public class Clock : MonoBehaviour
         int secondes = timeleft % 60;
 
         timerText.text = minutes.ToString("00") + ":" + secondes.ToString("00");
+
+        if (timeleft <= 0) {
+            timerText.text = "00:00";
+            SceneLoadData.success = true;
+        }
     }
 
     void ClockElapse() {

@@ -9,6 +9,8 @@ using UnityEngine.AI;
         public Transform[] goals = new Transform[3];
         public float runningSpeed = 14.0f;
         public float walkingSpeed = 5f;
+        public GameObject footStepsObject;
+        public GameObject cryObject;
 
     
         NavMeshAgent m_Agent;
@@ -23,12 +25,24 @@ using UnityEngine.AI;
         private float waitTime = 10.0f;
         private float timeCounter = 0.0f;
         private float runTimer = 5.0f;
-        private float idleTimer = 3.0f;        private GameObject target;
+        private float idleTimer = 3.0f;        
+        private GameObject target;
+        private AudioSource m_footStepsSource;
+        private AudioSource m_crySource;
+
+        private GameObject targetRef;
 
         void Start()
         {
             m_Agent = GetComponent<NavMeshAgent>();
             m_fov = GetComponent<FieldOfView>();
+            
+            m_footStepsSource = footStepsObject.GetComponent<AudioSource>();
+            if (cryObject != null)
+            {
+                m_crySource = cryObject.GetComponent<AudioSource>();
+            }
+            
 
             m_Agent.speed = walkingSpeed;
         }
@@ -37,6 +51,11 @@ using UnityEngine.AI;
         {   
             if (isWaiting)
             {
+                if (m_crySource != null)
+                {
+                    m_crySource.enabled = true;
+                }
+                m_footStepsSource.enabled = false;
                 timeCounter += Time.deltaTime;
                 idleTimer -= Time.deltaTime;
                 m_Agent.isStopped = true;
@@ -61,6 +80,13 @@ using UnityEngine.AI;
             }
             else
             {
+                if (m_crySource != null)
+                {
+                    // m_crySource.enabled = false;
+                    m_crySource.enabled = true;
+                }
+                m_footStepsSource.enabled = true;
+                
                 if (pauseRound)
                 {
                     GetThatKid();
@@ -85,22 +111,32 @@ using UnityEngine.AI;
             m_Agent.destination = goals[m_NextGoal].position;
         }
 
-        public void GetThatKid()
+        public void StartChase(GameObject target)
         {
-            print(m_fov.playerRef);
+            targetRef = target;
             m_Agent.speed = runningSpeed;
             isRunning = true;
             waitTime = 0;
-            m_Agent.destination = m_fov.playerRef.transform.position;
             pauseRound = true;
-            float distance = Vector3.Distance (m_Agent.transform.position, m_fov.playerRef.transform.position);
+        }
+        public void GetThatKid()
+        {
+
+            m_Agent.destination = targetRef.transform.position;
+            float distance = Vector3.Distance (m_Agent.transform.position, targetRef.transform.position);
             
             if (distance < 1.5f*m_Scale)
             {
-                print("m_fov.playerRef: " + m_fov.playerRef);
+                print(targetRef);
                 // Destroy(m_fov.playerRef);
-                m_fov.playerRef.GetComponent<Die>().die();
-                Debug.Log("You have been caught!");
+                Die die = targetRef.GetComponent<Die>();
+                if (die != null)
+                {
+                    die.die();
+                }else 
+                {
+                    targetRef.transform.parent.GetComponent<Die>().die();
+                }	
                 pauseRound = false;
                 isRunning = false;
                 m_Agent.speed = walkingSpeed;

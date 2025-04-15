@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using StarterAssets;
 
 public class Die : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Die : MonoBehaviour
     }
 
     public void die(){
+        PlayDieSound();
+        Destroy(this.gameObject);
         if(isPlayer){
             SceneLoadData.dead = true;
+            // Destroy(GameObject.Find("PlayerFollowCamera")); // Destroy the parent object (the player)
         }
-        PlayDieSound();
 
     }
     public void PlayDieSound()
@@ -25,6 +28,5 @@ public class Die : MonoBehaviour
         audioObject.transform.position = transform.position; // Set the position of the audio source to the die's position
         AudioSource audioSource = audioObject.GetComponent<AudioSource>(); // Get the AudioSource component
         audioSource.PlayOneShot(dieSound); // Play the die sound once
-        Destroy(this.gameObject);
     }
 }

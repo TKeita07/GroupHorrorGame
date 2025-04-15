@@ -67,11 +67,10 @@ public class FieldOfView : MonoBehaviour
             {
                 canSeePlayer = true;
                 children = visibleChildren.ToArray();
-                print("Visible children count: " + children.Length);
 
                 // Example: Chase the first visible child
                 playerRef = children[0];
-                nav.GetThatKid();
+                nav.StartChase(playerRef);
             }
             else
             {
