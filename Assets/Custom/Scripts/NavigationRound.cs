@@ -20,7 +20,7 @@ using UnityEngine.AI;
         private bool isRunning = false;
         private bool isLooking = false;
         private int randomIdle = 0;
-        private bool pauseRound = false;    
+        public bool pauseRound = false;    
         private int m_NextGoal = 0;
         FieldOfView m_fov;
         private float waitTime = 10.0f;

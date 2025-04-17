@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: SampleScene
-  mixer: {fileID: 0}
 --- !u!1 &739583027
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Interior
-  mixer: {fileID: 24100000, guid: bdb6f695c744e0e498b158ad40003d59, type: 2}
 --- !u!4 &917256680
 Transform:
   m_ObjectHideFlags: 0
@@ -741,6 +739,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055787854}
   m_CullTransparentMesh: 1
+--- !u!1 &1177205845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177205847}
+  - component: {fileID: 1177205846}
+  m_Layer: 0
+  m_Name: ResetValuies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1177205846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177205845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff62070ee25ac0d49932c9742cbb079f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: bdb6f695c744e0e498b158ad40003d59, type: 2}
+--- !u!4 &1177205847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177205845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 71.41522, y: -14.992309, z: 104.62599}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380290985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,3 +1285,4 @@ SceneRoots:
   - {fileID: 739583030}
   - {fileID: 917256680}
   - {fileID: 1662498306}
+  - {fileID: 1177205847}

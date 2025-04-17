@@ -12,8 +12,8 @@ public class Clock : MonoBehaviour
     [SerializeField]
     public ClockChoices dropDown = ClockChoices.Clock;  // this public var should appear as a drop down
 
-    // Durrée de la partie en minutes
-    public int TempDeJeux = 5;  
+    // Durrée de la partie en seconde
+    public int TempDeJeux = 5*60;  
 
     public bool reduceTime = false; 
 
@@ -25,12 +25,12 @@ public class Clock : MonoBehaviour
     {
         timerText = GetComponent<TextMeshProUGUI>();
         if(SceneLoadData.clockStarted) {
-            timeElapsed = (TempDeJeux * 60) - SceneLoadData.timeLeft;
+            timeElapsed = (TempDeJeux) - SceneLoadData.timeLeft;
         } else {
             timeElapsed = 0f;
             SceneLoadData.clockStarted = true;
         }
-        timefactor = 18000 / (TempDeJeux * 60); // 18000 seconds = 5 hours
+        timefactor = 18000 / (TempDeJeux); // 18000 seconds = 5 hours
     }
 
     void Update()
@@ -49,13 +49,13 @@ public class Clock : MonoBehaviour
         {
             ClockElapse();
         }
-        SceneLoadData.timeLeft = (TempDeJeux * 60) - timeElapsed;
+        SceneLoadData.timeLeft = (TempDeJeux) - timeElapsed;
     }
     void TimerElapse() {
         timeElapsed += Time.deltaTime;
 
         int totalSeconds = Mathf.FloorToInt(timeElapsed);
-        int timeleft = (TempDeJeux * 60) - totalSeconds;
+        int timeleft = (TempDeJeux) - totalSeconds;
 
         int minutes = (timeleft % 3600) / 60;
         int secondes = timeleft % 60;

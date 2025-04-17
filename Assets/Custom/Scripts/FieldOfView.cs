@@ -21,8 +21,14 @@ public class FieldOfView : MonoBehaviour
 
     private void Start()
     {
+
+    }
+
+    void OnEnable()
+    {
         nav = GetComponent<NavigationRound>();
         StartCoroutine(FOVRoutine());
+        print("FOV started: ");
     }
 
     private IEnumerator FOVRoutine()
@@ -31,6 +37,7 @@ public class FieldOfView : MonoBehaviour
 
         while (true)
         {
+            print("while loop");
             yield return wait;
             FieldOfViewCheck();
         }
@@ -38,13 +45,15 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
+         print("Range checks: " + nav.PauseRound);
         if (nav.PauseRound){
             return;
         }
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-        
+
         if (rangeChecks.Length != 0)
         {
+            print("Found something in range");
             List<GameObject> visibleChildren = new List<GameObject>();
 
             foreach (Collider rangeCheck in rangeChecks)
@@ -59,12 +68,14 @@ public class FieldOfView : MonoBehaviour
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                     {
                         visibleChildren.Add(target.gameObject);
+                        print("Found something in FOV: " + target.name);
                     }
                 }
             }
 
             if (visibleChildren.Count > 0)
             {
+                print("children found: " + visibleChildren.Count);
                 canSeePlayer = true;
                 children = visibleChildren.ToArray();
 
