@@ -629,7 +629,7 @@ AudioMixerController:
     - 8b39b18f44fa3104e93ff27951656a6f
     - 05659f4f3e2f8cb4d86c95884eaf1429
     name: Fx-Voices
-  m_CurrentViewIndex: 1
+  m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -681,8 +681,8 @@ AudioMixerSnapshotController:
   m_FloatValues:
     7b9c1b73657b603419576e338992fe60: 4.323672
     08a879b485373ab4183580aaee4ebde1: -22.416893
-    52c015353f63b374c81eec4cec585869: -2.671825
-    417a0f85955920c41888a1ff8152b1c4: -1.0129173
+    52c015353f63b374c81eec4cec585869: 4.982109
+    417a0f85955920c41888a1ff8152b1c4: 12.525998
     da37c9a51a05ea3428c20a029bca3c3e: -7.436936
     7e6544b58e4cb3140b00ba06f7e8019c: -10.692411
     6ab0edd5c25597b498747edeff97b6d7: -2.6718233
