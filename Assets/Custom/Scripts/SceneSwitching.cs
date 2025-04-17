@@ -11,6 +11,7 @@ public class SceneSwitching : MonoBehaviour, IInteractable
     [SerializeField] private string sceneName; // Reference to the Start button
     void IInteractable.Interact(GameObject playerObject)
     {
+        SceneLoadData.delayNunSpawn = true;
         StartCoroutine(waiter());
         Time.timeScale = 0; // Reset time scale to normal
     }
@@ -23,7 +24,7 @@ public class SceneSwitching : MonoBehaviour, IInteractable
 
         //Wait for 4 seconds
         yield return new WaitForSecondsRealtime(1);
-        print("waiter");
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1; // Reset time scale to normal
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.AI;
         public bool isEnemy = false;
         public float m_Scale = 1f;
         public Transform[] goals = new Transform[3];
+        public Transform[] secondGoals = new Transform[3];
         public float runningSpeed = 14.0f;
         public float walkingSpeed = 5f;
         public GameObject footStepsObject;
@@ -31,6 +32,7 @@ using UnityEngine.AI;
         private AudioSource m_crySource;
 
         private GameObject targetRef;
+        private Transform[] currentGoals = new Transform[3];
 
         void Start()
         {
@@ -43,12 +45,23 @@ using UnityEngine.AI;
                 m_crySource = cryObject.GetComponent<AudioSource>();
             }
             
-
+            currentGoals = goals;
             m_Agent.speed = walkingSpeed;
         }
     
         void Update()
-        {   
+        {   if (isEnemy)
+            {
+                if (SceneLoadData.isPlayerInCimetery)
+                {
+                    currentGoals = goals;
+                }
+                else
+                {
+                    currentGoals = secondGoals;
+                }
+            }
+
             if (isWaiting)
             {
                 if (m_crySource != null)
@@ -101,14 +114,18 @@ using UnityEngine.AI;
 
         void MoveRound()
         {   
-            float distance = Vector3.Distance(m_Agent.transform.position, goals[m_NextGoal].position);
+            float distance = Vector3.Distance(m_Agent.transform.position, currentGoals[m_NextGoal].position);
 
             if (distance < 1f*m_Scale)
             {
-                m_NextGoal = (m_NextGoal + 1) % goals.Length;
+                int previousGoal = m_NextGoal;
+                do
+                {
+                    m_NextGoal = Random.Range(0, currentGoals.Length);
+                } while (m_NextGoal == previousGoal);
                 isWaiting = true;
             }
-            m_Agent.destination = goals[m_NextGoal].position;
+            m_Agent.destination = currentGoals[m_NextGoal].position;
         }
 
         public void StartChase(GameObject target)
@@ -127,7 +144,6 @@ using UnityEngine.AI;
             
             if (distance < 1.5f*m_Scale)
             {
-                print(targetRef);
                 // Destroy(m_fov.playerRef);
                 Die die = targetRef.GetComponent<Die>();
                 if (die != null)

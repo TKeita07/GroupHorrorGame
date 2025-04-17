@@ -25,7 +25,7 @@ public class Clock : MonoBehaviour
     {
         timerText = GetComponent<TextMeshProUGUI>();
         if(SceneLoadData.clockStarted) {
-            timeElapsed = SceneLoadData.currentTime;
+            timeElapsed = (TempDeJeux * 60) - SceneLoadData.timeLeft;
         } else {
             timeElapsed = 0f;
             SceneLoadData.clockStarted = true;
@@ -35,6 +35,8 @@ public class Clock : MonoBehaviour
 
     void Update()
     {
+        if (SceneLoadData.dead)
+        {return;}
         if (SceneLoadData.reduceTime){
             timeElapsed += 60;
             SceneLoadData.reduceTime = false;
@@ -47,7 +49,7 @@ public class Clock : MonoBehaviour
         {
             ClockElapse();
         }
-        SceneLoadData.currentTime = timeElapsed;
+        SceneLoadData.timeLeft = (TempDeJeux * 60) - timeElapsed;
     }
     void TimerElapse() {
         timeElapsed += Time.deltaTime;

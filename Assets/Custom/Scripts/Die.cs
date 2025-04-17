@@ -16,11 +16,13 @@ public class Die : MonoBehaviour
 
     public void die(){
         PlayDieSound();
-        Destroy(this.gameObject);
         if(isPlayer){
             SceneLoadData.dead = true;
             // Destroy(GameObject.Find("PlayerFollowCamera")); // Destroy the parent object (the player)
+        } else {
+            SceneLoadData.deadKids.Add(this.gameObject.name); // Add the object to the list of dead kids
         }
+        Destroy(this.gameObject);
 
     }
     public void PlayDieSound()

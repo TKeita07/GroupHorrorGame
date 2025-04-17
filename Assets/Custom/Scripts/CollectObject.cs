@@ -12,6 +12,9 @@ public class CollectObject : MonoBehaviour, IInteractable
         AudioSource audioSource = audioObject.GetComponent<AudioSource>(); // Get the AudioSource component
         audioSource.PlayOneShot(dieSound); // Play the die sound once
         SceneLoadData.reduceTime = true;
+
+        SceneLoadData.deadKids.Add(this.gameObject.name);
+        
         Destroy(this.gameObject);
     }
 
