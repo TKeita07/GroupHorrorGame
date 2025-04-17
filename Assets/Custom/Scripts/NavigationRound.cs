@@ -12,6 +12,7 @@ using UnityEngine.AI;
         public float walkingSpeed = 5f;
         public GameObject footStepsObject;
         public GameObject cryObject;
+        public GameObject icuObject;
 
     
         NavMeshAgent m_Agent;
@@ -30,6 +31,8 @@ using UnityEngine.AI;
         private GameObject target;
         private AudioSource m_footStepsSource;
         private AudioSource m_crySource;
+        private AudioSource m_icuObject;
+
 
         private GameObject targetRef;
         private Transform[] currentGoals = new Transform[3];
@@ -43,6 +46,10 @@ using UnityEngine.AI;
             if (cryObject != null)
             {
                 m_crySource = cryObject.GetComponent<AudioSource>();
+            }
+            if (icuObject != null)
+            {
+                m_icuObject = icuObject.GetComponent<AudioSource>();
             }
             
             currentGoals = goals;
@@ -135,9 +142,23 @@ using UnityEngine.AI;
             isRunning = true;
             waitTime = 0;
             pauseRound = true;
+            print(m_icuObject);
+            print(target.name);
+            if (m_icuObject != null)
+            {
+                m_icuObject.Play();
+            }
         }
         public void GetThatKid()
         {
+            if(targetRef == null)
+            {
+                pauseRound = false;
+                isRunning = false;
+                m_Agent.speed = walkingSpeed;
+                ResetWaitTimer();
+                return;
+            }
 
             m_Agent.destination = targetRef.transform.position;
             float distance = Vector3.Distance (m_Agent.transform.position, targetRef.transform.position);

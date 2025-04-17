@@ -45,7 +45,6 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
-         print("Range checks: " + nav.PauseRound);
         if (nav.PauseRound){
             return;
         }
@@ -67,15 +66,17 @@ public class FieldOfView : MonoBehaviour
 
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                     {
+                        print(target.name);
+                        if (target.name == "Capsule" && !SceneLoadData.PLayerVisible){
+                            continue;
+                        }
                         visibleChildren.Add(target.gameObject);
-                        print("Found something in FOV: " + target.name);
                     }
                 }
             }
 
             if (visibleChildren.Count > 0)
             {
-                print("children found: " + visibleChildren.Count);
                 canSeePlayer = true;
                 children = visibleChildren.ToArray();
 

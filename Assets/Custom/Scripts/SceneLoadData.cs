@@ -18,6 +18,7 @@ public static class SceneLoadData
     public static float Music_Volume = 0.0f;
 
 
+    public static bool PLayerVisible = true;
     
 
     public static List<string> deadKids= new List<string>();

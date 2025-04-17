@@ -10,6 +10,7 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
 public class GameSystem : MonoBehaviour
 {
+    public bool CHEAT; // Reference to the game over panel object
     public GameObject gameOverPanel; // Reference to the game over panel object
     public GameObject successPanel;
     public GameObject nunController; // Reference to the nun controller object
@@ -44,10 +45,12 @@ public class GameSystem : MonoBehaviour
             StartTimer();
         }
         hideDeadKids(); // Hide the dead kids at the start
+
     }
 
     void Update()
     {
+        SceneLoadData.PLayerVisible = !CHEAT; // Reset the dead state
         if (SceneLoadData.dead)
         {
             Cursor.lockState = CursorLockMode.None;

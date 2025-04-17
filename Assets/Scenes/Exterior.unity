@@ -1541,6 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1849031de6496c342897dda22ef4c9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CHEAT: 1
   gameOverPanel: {fileID: 1067020355}
   successPanel: {fileID: 729170434}
   nunController: {fileID: 1232492425}
